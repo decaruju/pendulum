@@ -31,12 +31,14 @@ def draw_point():
 
 def update():
     global canvas, master
-    draw_point()
+    #draw_point()
     for pend in pends:
         pend[0].update(pend=pend[1])
         pend[1].update(center=pend[0].get_end())
-        points.append([1, pend[0].get_end()])
-        points.append([50, pend[1].get_end()])
+        point = pend[1].get_end()
+        canvas.create_oval(point.x - 1, point.y - 1, point.x + 1, point.y + 1, fill='#000000')
+        #points.append([1, pend[0].get_end()])
+        #points.append([50, pend[1].get_end()])
     master.after(20, update)
 
 
