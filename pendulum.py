@@ -13,7 +13,7 @@ class Pendulum:
         return Point(self.center.x + self.length * cos(self.angle), self.center.y + self.length * sin(self.angle))
 
     def update(self, center=None, pend=None):
-        speed = 0.005
+        speed = 0.001
         if center is not None:
             self.center = center
         if pend is not None:
