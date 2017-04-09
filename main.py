@@ -3,13 +3,13 @@ import tkinter as tk
 from pendulum import Pendulum
 from point import Point
 
-size = 1960/2, 1080/2
+size = 1960, 1080
 master = tk.Tk()
 canvas = tk.Canvas(master, width=size[0], height=size[1])
 master.attributes('-fullscreen', True)
 canvas.pack()
-pend1 = Pendulum(Point(size[0] / 2, size[1] / 2), length=200)
-pend2 = Pendulum(Point(0, 0), length=250)
+pend1 = Pendulum(Point(size[0] / 2, size[1] / 2), length=100)
+pend2 = Pendulum(Point(0, 0), length=200)
 points = []
 
 
@@ -28,7 +28,7 @@ def draw_point():
     except:
         pass
     canvas.create_line(size[0] / 2, size[1] / 2, pend1.get_end().x, pend1.get_end().y)
-    points = [p for p in points if p[0] > 10]
+    points = [p for p in points if p[0] > 0]
 
 def update():
     global canvas, master, pend1
@@ -36,7 +36,7 @@ def update():
     pend1.update(pend=pend2)
     pend2.update(center=pend1.get_end())
     points.append([1, pend1.get_end()])
-    points.append([100, pend2.get_end()])
+    points.append([200, pend2.get_end()])
     master.after(20, update)
 
 
